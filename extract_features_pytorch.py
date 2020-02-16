@@ -38,6 +38,6 @@ def search_vectors(query, doc_vecs, docs):
 
     for n in top_100:
         list_doc = docs[n].split('\n')
-        return_dict.append({"title": list_doc[0], "url": list_doc[2]})
+        return_dict.append({"title": list_doc[2], "url": list_doc[0]})
     return_dicts = {"pages": return_dict}
     return return_dicts
