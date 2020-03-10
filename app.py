@@ -2,9 +2,7 @@ import json
 
 import falcon
 
-# from extract_features import extract_features
 from extract_features_pytorch import extract_features, search_vectors
-# from load_vector import search_vector
 
 from transformers import *
 
@@ -14,10 +12,9 @@ import pickle
 
 class AppResource(object):
     def __init__(self):
+        # 学習時に使った日本語tokenizer等の用意
         MODELS = [(BertForSequenceClassification, BertJapaneseTokenizer, "bert-base-japanese")]
         for model_class, tokenizer_class, pretrained_weights in MODELS:
-            # Load pretrained model/tokenizer
-            # config = AlbertConfig.from_pretrained(pretrained_weights)
             config = BertConfig.from_pretrained(pretrained_weights)
 
             self.tokenizer = tokenizer_class.from_pretrained(pretrained_weights)
@@ -25,7 +22,7 @@ class AppResource(object):
 
         self.doc_vecs = np.load("./doc_vecs.npy")
         self.docs = pickle.load(open("./docs.pkl", "rb"))
-        print("ok")
+        print("connect")
 
     def on_post(self, req, res):
         query = req.media.get('q')
