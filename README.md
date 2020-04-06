@@ -3,7 +3,7 @@
 DEMO:
 https://twitter.com/7110It/status/1234199528422563840?s=20
 
-使用技術
+### 使用技術
 クライアント：React Sass
 サーバー：Go Python BERT
 
